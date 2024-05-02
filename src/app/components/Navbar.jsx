@@ -42,11 +42,11 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex flex-row justify-between items-center">
+    <div className="flex flex-row bg-gray-100 p-4 justify-between items-center">
       <Link href="/">
       <div className="flex flex-row gap-1 items-center">
         <Image src="/assets/logo.svg" width={60} height={60} alt="menu" />
-        <h1 className="text-[20px] font-medium">Shree Hariganesh Sweets</h1>
+        <h1 className="text-[20px] font-medium hidden sm:block md:block lg:block">Sree Hariganesh Sweets</h1>
       </div>
       </Link>
       <Image

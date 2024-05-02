@@ -2,13 +2,12 @@
 import { NextResponse } from 'next/server';
 import { connectToDatabase, disconnectFromDatabase } from '@/app/lib/database';
 
-export const GET = async (request, {params}) => {
-  const product = params.item;
+export const GET = async () => {
   try {
     const client = await connectToDatabase();
     const db = client.db('sweetshop');
-    const products = await db.collection(product).find().toArray()
-    return NextResponse.json(products);
+    const combos = await db.collection('special_combos').find().toArray()
+    return NextResponse.json(combos);
   } catch (error) {
     console.error(error);
     return NextResponse.error(new Error('Failed to fetch data'));

@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import Image from "next/image";
+import Footer from "./Footer";
 
 const Products = ({ products, item_name }) => {
   const groupedSweets = {};
@@ -22,7 +23,7 @@ const Products = ({ products, item_name }) => {
           <h2 className="font-normal text-3xl my-14 capitalize">
             {category === "undefined" ? item_name : category}
           </h2>
-          <div className="flex flex-col md:gap-10 lg:gap-20 md:flex-row flex-wrap">
+          <div className="flex flex-col gap-10 md:gap-10 lg:gap-20 md:flex-row flex-wrap">
             {groupedSweets[category].map((sweet) => (
               <div
                 key={sweet._id}
@@ -37,7 +38,7 @@ const Products = ({ products, item_name }) => {
                 <div className="flex flex-row justify-between">
                   <div>
                     <h3>{sweet.name}</h3>
-                    <p>Price: {sweet.price}</p>
+                    <p>Price: ₹{sweet.price}</p>
                   </div>
                   <button className="px-12 py-3 bg-[#F74541] rounded-full text-white font-medium">
                     Add
@@ -48,6 +49,7 @@ const Products = ({ products, item_name }) => {
           </div>
         </div>
       ))}
+      <Footer></Footer>
     </div>
   );
 };
