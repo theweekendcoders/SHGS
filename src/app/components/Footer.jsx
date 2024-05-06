@@ -87,7 +87,7 @@ const Footer = () => {
                   Address
                 </h2>
                 <p className="font-light text-lg">
-                  2/40 ,4th Street, S V M Nagar, Palanipet, Arakkonam - 631002.
+                  2/40, 4th Street, S V M Nagar, Palanipet, Arakkonam - 631002.
                 </p>
               </div>
             </div>

@@ -1,7 +1,5 @@
 import Image from "next/image";
 import Link from "next/link";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
 import SpecialCombos from "./components/SpecialCombos";
 
 
@@ -45,7 +43,6 @@ export default async function Home() {
 
   return (
     <div>
-      <Navbar />
       <div className="">
         <section className="my-14 grid grid-cols-1 lg:grid-cols-2 lg:gap-10 lg:items-center">
           <div className="text-center lg:text-left">
@@ -125,7 +122,6 @@ export default async function Home() {
 
         <SpecialCombos combos={items}/>
       </div>
-      <Footer></Footer>
     </div>
   );
 }

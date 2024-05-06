@@ -4,9 +4,19 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+// import { UserAuth } from "../context/AuthContext";
 
 const Navbar = () => {
   const pathname = usePathname();
+  // const { user, googleSignIn, logOut } = UserAuth();
+
+  // const handleSignIn = async () => {
+  //   try {
+  //     await googleSignIn();
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const Links = [
     {
@@ -44,10 +54,12 @@ const Navbar = () => {
   return (
     <div className="flex flex-row bg-gray-100 p-4 justify-between items-center">
       <Link href="/">
-      <div className="flex flex-row gap-1 items-center">
-        <Image src="/assets/logo.svg" width={60} height={60} alt="menu" />
-        <h1 className="text-[20px] font-medium hidden sm:block md:block lg:block">Sree Hariganesh Sweets</h1>
-      </div>
+        <div className="flex flex-row gap-1 items-center">
+          <Image src="/assets/logo.svg" width={60} height={60} alt="menu" />
+          <h1 className="text-[20px] font-medium hidden sm:block md:block lg:block">
+            Sree Hariganesh Sweets
+          </h1>
+        </div>
       </Link>
       <Image
         src="/assets/menu.svg"
@@ -61,19 +73,12 @@ const Navbar = () => {
         <div
           className={
             selectMenu
-              ? "absolute bottom-0 right-0 top-0 z-10 h-[100%] flex flex-col gap-4 text-white backdrop-blur-2xl bg-black/40 w-[300px] pr-4 pt-14 ease-in duration-200"
-              : "absolute bottom-0 right-0 hidden top-0 z-10 h-screen flex-col gap-4 text-white backdrop-blur-2xl bg-black/40 w-[300px] pr-4 pt-14 ease-in duration-200"
+              ? "absolute bottom-0 right-0 top-0 z-10 h-[100%] flex flex-col gap-4 text-white backdrop-blur-2xl bg-black/40 w-[300px] pr-4 pt-10 ease-in duration-200"
+              : "absolute bottom-0 right-0 hidden top-0 z-10 min-h-screen flex-col gap-4 text-white backdrop-blur-2xl bg-black/40 w-[300px] pr-4 pt-4 ease-in duration-200"
           }
         >
           <div className="flex flex-col justify-end items-end gap-10 w-full">
-            <Image
-              src="/assets/close.svg"
-              width={30}
-              height={30}
-              alt="close"
-              onClick={toggleSelectMenu}
-              className=" w-[32px] h-[32px] ml-8 xl:hidden"
-            />
+            <button onClick={toggleSelectMenu} className="ml-8 xl:hidden text-black text-lg font-bold py-2 px-6 bg-white rounded-full">Close</button>
             <div className="flex flex-col gap-8 items-end">
               {Links.map((link, index) => (
                 <Link
@@ -89,9 +94,18 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <Link href='/'>
-                <h1 className="absolute font-medium text-2xl bottom-10 right-8">Login</h1>
-              </Link>
+              <div className="flex flex-row">
+                <Link href="/cart" onClick={toggleSelectMenu}>
+                  <h1 className="ml-8 xl:hidden text-black text-lg font-bold py-2 px-6 bg-white rounded-full">
+                    Cart
+                  </h1>
+                </Link>
+                <Link href="/"  onClick={toggleSelectMenu}>
+                  <h1 className="ml-8 xl:hidden text-black text-lg font-bold py-2 px-6 bg-white rounded-full">
+                    Login
+                  </h1>
+                </Link>
+              </div>
             </div>
           </div>
         </div>
@@ -111,25 +125,24 @@ const Navbar = () => {
             {link.name}
           </Link>
         ))}
-        <Link href='/'>
-        <Image
-              src="/assets/cart.png"
-              width={48}
-              height={48}
-              alt="close"
-              onClick={toggleSelectMenu}
-              className=" w-[32px] h-[32px]"
-            />
+        <Link href="/cart">
+          <Image
+            src="/assets/cart.png"
+            width={48}
+            height={48}
+            alt="close"
+            className=" w-[32px] h-[32px]"
+          />
         </Link>
-        <Link href='/'>
-        <Image
-              src="/assets/profile.png"
-              width={48}
-              height={48}
-              alt="close"
-              onClick={toggleSelectMenu}
-              className=" w-[32px] h-[32px]"
-            />
+        <Link href="/">
+          <Image
+            src="/assets/profile.png"
+            width={48}
+            height={48}
+            alt="close"
+            onClick={toggleSelectMenu}
+            className=" w-[32px] h-[32px]"
+          />
         </Link>
       </div>
     </div>
