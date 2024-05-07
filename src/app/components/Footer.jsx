@@ -39,10 +39,10 @@ const Footer = () => {
   return (
     <>
     {/* <BlackCursor /> */}
-      <section className="bg-gray-100 flex flex-col text-black p-4 mdgap-8">
+      <section className="bg-gray-100 flex flex-col text-black p-4 md:gap-8">
         <div className="flex flex-col gap-10 lg:flex-row lg:justify-between">
           <div className="mt-4">
-            <Link href="/">
+            <Link href="/" className="flex flex-row gap-4 justify-center items-center">
               <Image
                 src="/assets/logo.svg"
                 width={120}
@@ -50,11 +50,11 @@ const Footer = () => {
                 alt="Logo"
                 className="w-[64px] h-[64px] md:w-[120px] md:h-[120px]"
               />
+              <span className="text-[20px] md:text-[25px] lg:text-[28px] font-regular">Sree Hariganesh Sweets.</span>
             </Link>
-            <span className="text-[20px] md:text-[25px] lg:text-[30px] font-light">Sree Hariganesh Sweets.</span>
           </div>
 
-          <div className="flex flex-col gap-10 lg:gap-20 lg:flex-row">
+          <div className="flex flex-col gap-10 lg:gap-20 lg:flex-row lg:mt-12">
             <div>
               <h2 className="text-xl text-red-700 font-bold mb-2">Content</h2>
               {categories.map((category) => (

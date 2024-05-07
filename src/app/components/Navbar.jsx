@@ -1,22 +1,35 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-// import { UserAuth } from "../context/AuthContext";
+import { UserAuth } from "../context/AuthContext";
+import { set } from "firebase/database";
 
 const Navbar = () => {
+  const { user, googleSignIn, logOut } = UserAuth();
   const pathname = usePathname();
-  // const { user, googleSignIn, logOut } = UserAuth();
+  const [loading, setLoading] = useState(true);
 
-  // const handleSignIn = async () => {
-  //   try {
-  //     await googleSignIn();
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
+  const handleSignOut = async () => {
+    try {
+      await logOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+useEffect(() => {
+    // Check if the user is authenticated on component mount and whenever the user object changes
+    const isAuthenticated = !!user;
+    console.log('User is authenticated:', isAuthenticated);
+
+    // Set isInitialLoad to false after the first render
+    if (loading) {
+      setLoading(false);
+    }
+  }, [user, loading]);
 
   const Links = [
     {
@@ -56,9 +69,7 @@ const Navbar = () => {
       <Link href="/">
         <div className="flex flex-row gap-1 items-center">
           <Image src="/assets/logo.svg" width={60} height={60} alt="menu" />
-          <h1 className="text-[20px] font-medium hidden sm:block md:block lg:block">
-            Sree Hariganesh Sweets
-          </h1>
+          <h1 className="text-[20px] font-medium">Shree Hariganesh Sweets</h1>
         </div>
       </Link>
       <Image
@@ -73,12 +84,19 @@ const Navbar = () => {
         <div
           className={
             selectMenu
-              ? "absolute bottom-0 right-0 top-0 z-10 h-[100%] flex flex-col gap-4 text-white backdrop-blur-2xl bg-black/40 w-[300px] pr-4 pt-10 ease-in duration-200"
-              : "absolute bottom-0 right-0 hidden top-0 z-10 min-h-screen flex-col gap-4 text-white backdrop-blur-2xl bg-black/40 w-[300px] pr-4 pt-4 ease-in duration-200"
+              ? "absolute bottom-0 right-0 top-0 z-10 h-[100%] flex flex-col gap-4 text-white backdrop-blur-2xl bg-black/40 w-[300px] pr-4 pt-14 ease-in duration-200"
+              : "absolute bottom-0 right-0 hidden top-0 z-10 h-screen flex-col gap-4 text-white backdrop-blur-2xl bg-black/40 w-[300px] pr-4 pt-14 ease-in duration-200"
           }
         >
           <div className="flex flex-col justify-end items-end gap-10 w-full">
-            <button onClick={toggleSelectMenu} className="ml-8 xl:hidden text-black text-lg font-bold py-2 px-6 bg-white rounded-full">Close</button>
+            <Image
+              src="/assets/close.svg"
+              width={30}
+              height={30}
+              alt="close"
+              onClick={toggleSelectMenu}
+              className=" w-[32px] h-[32px] ml-8 xl:hidden"
+            />
             <div className="flex flex-col gap-8 items-end">
               {Links.map((link, index) => (
                 <Link
@@ -94,18 +112,34 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-              <div className="flex flex-row">
-                <Link href="/cart" onClick={toggleSelectMenu}>
-                  <h1 className="ml-8 xl:hidden text-black text-lg font-bold py-2 px-6 bg-white rounded-full">
-                    Cart
-                  </h1>
-                </Link>
-                <Link href="/"  onClick={toggleSelectMenu}>
-                  <h1 className="ml-8 xl:hidden text-black text-lg font-bold py-2 px-6 bg-white rounded-full">
+
+              <Link href="/">
+                <h1 className="absolute font-medium text-2xl bottom-40 right-8">
+                  Cart
+                </h1>
+              </Link>
+
+              {loading ? null : !user ? (
+                <Link href="/login">
+                  <h1 className="absolute font-medium text-2xl bottom-24 right-8">
                     Login
                   </h1>
                 </Link>
-              </div>
+              ) : (
+                <div className="">
+                  <Link href="/profile">
+                    <h1 className="absolute font-medium text-2xl bottom-28 right-8">
+                      Profile
+                    </h1>
+                  </Link>
+                  <button
+                    className="absolute font-medium text-2xl bottom-16 right-8"
+                    onClick={handleSignOut}
+                  >
+                    Logout
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -125,7 +159,7 @@ const Navbar = () => {
             {link.name}
           </Link>
         ))}
-        <Link href="/cart">
+        <Link href="/">
           <Image
             src="/assets/cart.png"
             width={48}
@@ -134,16 +168,36 @@ const Navbar = () => {
             className=" w-[32px] h-[32px]"
           />
         </Link>
-        <Link href="/">
-          <Image
-            src="/assets/profile.png"
-            width={48}
-            height={48}
-            alt="close"
-            onClick={toggleSelectMenu}
-            className=" w-[32px] h-[32px]"
-          />
-        </Link>
+
+        {loading ? null : !user ? (
+          <Link href="/login">
+            <Image
+              src="/assets/profile.png"
+              width={48}
+              height={48}
+              alt="close"
+              className=" w-[32px] h-[32px]"
+            />
+          </Link>
+        ) : (
+          <div className="flex flex-row gap-10 items-center">
+            <Link href="/profile">
+              <Image
+                src="/assets/profile.png"
+                width={48}
+                height={48}
+                alt="close"
+                className=" w-[32px] h-[32px]"
+              />
+            </Link>
+            <button
+              onClick={logOut}
+              className="px-10 py-3 bg-[#F74541] text-white font-medium hover:scale-105 duration-150"
+            >
+              Logout
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

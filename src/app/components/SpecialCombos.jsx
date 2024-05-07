@@ -4,10 +4,10 @@ import Image from "next/image";
 
 const SpecialCombos = ({ combos }) => {
   return (
-    <section className="mb-14 ">
+    <section className="my-14 ">
       <h1 className="text-center font-normal text-3xl">Special Combos</h1>
       <div className="my-14 w-full">
-        <div className="grid grid-flow-col gap-10 overflow-x-scroll py-5 lg:grid-cols-3 lg:overflow-hidden lg:justify-items-center">
+        <div className="grid grid-flow-col gap-10 overflow-x-scroll py-5 lg:overflow-x-auto lg:justify-items-center">
           {combos.map((item, index) => (
             <div
               className="w-[250px] rounded-3xl flex flex-col shadow-xl hover:scale-105 hover:transition-all hover:ease-in"

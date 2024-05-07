@@ -1,41 +1,39 @@
-// "use client";
-// import { useContext, createContext, useState, useEffect } from "react";
-// import {
-//   signInWithPopup,
-//   signOut,
-//   onAuthStateChanged,
-//   GoogleAuthProvider,
-// } from "firebase/auth";
-// import { auth } from "../firebase/config";
+"use client"
 
-// const AuthContext = createContext();
+import { useContext, createContext, useState, useEffect } from "react";
+import {signInWithPopup, signOut, onAuthStateChanged, GoogleAuthProvider} from "firebase/auth";
+import {auth} from "../firebase/config";
 
-// export const AuthContextProvider = ({ children }) => {
-//   const [user, setUser] = useState(null);
+const AuthContext = createContext();
 
-//   const googleSignIn = () => {
-//     const provider = new GoogleAuthProvider();
-//     signInWithPopup(auth, provider);
-//   };
+export const AuthContextProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
 
-//   const logOut = () => {
-//     signOut(auth);
-//   };
+    const googleSignIn = () => {
+        const provider = new GoogleAuthProvider();
+        signInWithPopup(auth, provider)
+    }
 
-//   useEffect(() => {
-//     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-//       setUser(currentUser);
-//     });
-//     return () => unsubscribe();
-//   }, [user]);
+    const logOut = () => {
+        signOut(auth);
+    }
 
-//   return (
-//     <AuthContext.Provider value={{ user, googleSignIn, logOut }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// };
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser);
+        });
 
-// export const UserAuth = () => {
-//   return useContext(AuthContext);
-// };
+        return () => unsubscribe();
+    }, [user])
+
+    return(
+        <AuthContext.Provider value={{user, googleSignIn, logOut}}>
+            {children}
+        </AuthContext.Provider>
+    )
+
+}
+
+export const UserAuth = () => {
+    return useContext(AuthContext);
+}
