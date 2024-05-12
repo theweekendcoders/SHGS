@@ -9,7 +9,7 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import CartContext from "../context/CartContext";
 
-const CheckoutPage = () => {
+const CheckoutPage = (user) => {
   const { cart } = useContext(CartContext);
   const router = useRouter();
 
@@ -172,7 +172,7 @@ const CheckoutPage = () => {
         <div className="grow border-2 border-black rounded-sm p-4 flex flex-col">
           <h1 className="text-2xl font-semibold">1. Delivery Details</h1>
           <div className="m-4">
-            <UserDetailsForm />
+            <UserDetailsForm data={user.user}/>
           </div>
         </div>
       </div>

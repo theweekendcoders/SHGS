@@ -3,9 +3,11 @@
 import React, { useContext } from "react";
 import Link from "next/link";
 import CartContext from "../context/CartContext";
+import {UserAuth} from "../context/AuthContext"
 
 const Cart = () => {
   const { addItemToCart, cart, deleteItemFromCart } = useContext(CartContext);
+  const {user} = UserAuth();
 
   const incrementQuantity = (cartItem) => {
     const newQty = cartItem?.quantity + 1;
@@ -201,9 +203,9 @@ const Cart = () => {
                     </li>
                   </ul>
 
-                  <a href="/checkout" className="px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer">
+                  <Link href={`/checkout?userId=${user.uid}`} className="px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer">
                     Continue
-                  </a>
+                  </Link>
 
                   <Link
                     href="/"

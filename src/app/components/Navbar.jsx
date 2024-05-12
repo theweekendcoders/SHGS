@@ -181,7 +181,7 @@ useEffect(() => {
           </Link>
         ) : (
           <div className="flex flex-row gap-10 items-center">
-            <Link href="/profile">
+            <Link href={`/profile?userId=${user.uid}`}>
               <Image
                 src="/assets/profile.png"
                 width={48}

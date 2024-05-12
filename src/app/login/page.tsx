@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, {useEffect} from 'react'
 import Image from 'next/image'
 import Navbar from '../components/Navbar'
 import Link from 'next/link'
@@ -19,6 +19,7 @@ const page = () => {
             console.log(error)
         }
     }
+
     return (
         <div className='my-14'>
             <h1 className='text-2xl font-medium text-center my-14'>Login</h1>
