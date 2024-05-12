@@ -21,9 +21,11 @@
     "mongodb": "^6.5.0",
     "next": "14.2.3",
     "next-auth": "^4.24.7",
+    "razorpay": "^2.9.3",
     "react": "^18",
     "react-dom": "^18",
     "react-player": "^2.16.0",
+    "react-toastify": "^10.0.5",
     "three": "^0.164.1"
   },
   "devDependencies": {

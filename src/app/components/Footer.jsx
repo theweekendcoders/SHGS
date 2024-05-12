@@ -50,7 +50,7 @@ const Footer = () => {
                 alt="Logo"
                 className="w-[64px] h-[64px] md:w-[120px] md:h-[120px]"
               />
-              <span className="text-[20px] md:text-[25px] lg:text-[28px] font-regular">Sree Hariganesh Sweets.</span>
+              <span className="text-[20px] md:text-[25px] lg:text-[28px] font-regular">Sree Hariganesh Sweets</span>
             </Link>
           </div>
 

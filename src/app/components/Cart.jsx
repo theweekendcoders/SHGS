@@ -42,6 +42,14 @@ const Cart = () => {
     // window.location.reload();
   };
 
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    cart.cartItems.forEach((cartItem) => {
+      totalPrice += cartItem.price * cartItem.quantity * (cartItem.weight / 250);
+    });
+    return totalPrice;
+  };
+
   return (
     <>
       <section className="py-5 sm:py-7 bg-blue-100">
@@ -148,7 +156,7 @@ const Cart = () => {
                         <div>
                           <div className="leading-5">
                             <p className="font-semibold not-italic">
-                              {cartItem.price *
+                            ₹ {cartItem.price *
                                 cartItem.quantity *
                                 (cartItem.weight / 250)}
                             </p>
@@ -181,23 +189,19 @@ const Cart = () => {
                   <ul className="mb-5">
                     <li className="flex justify-between text-gray-600  mb-1">
                       <span>Total price:</span>
-                      <span>₹</span>
+                      <span>₹{calculateTotalPrice()}</span>
                     </li>
                     <li className="flex justify-between text-gray-600  mb-1">
-                      <span>Total Units:</span>
-                      <span className="text-green-500">7 (Units)</span>
-                    </li>
-                    <li className="flex justify-between text-gray-600  mb-1">
-                      <span>TAX:</span>
-                      <span>₹99</span>
+                      <span>Delivery Charges:</span>
+                      <span>₹60</span>
                     </li>
                     <li className="text-lg font-bold border-t flex justify-between mt-3 pt-3">
                       <span>Total price:</span>
-                      <span>₹999</span>
+                      <span>₹ {calculateTotalPrice() + 60}</span>
                     </li>
                   </ul>
 
-                  <a className="px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer">
+                  <a href="/checkout" className="px-4 py-3 mb-2 inline-block text-lg w-full text-center font-medium text-white bg-green-600 border border-transparent rounded-md hover:bg-green-700 cursor-pointer">
                     Continue
                   </a>
 

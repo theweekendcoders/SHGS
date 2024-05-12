@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { UserAuth } from "../context/AuthContext";
-import { set } from "firebase/database";
+// import { set } from "firebase/database";
 
 const Navbar = () => {
   const { user, googleSignIn, logOut } = UserAuth();
@@ -69,7 +69,7 @@ useEffect(() => {
       <Link href="/">
         <div className="flex flex-row gap-1 items-center">
           <Image src="/assets/logo.svg" width={60} height={60} alt="menu" />
-          <h1 className="text-[20px] font-medium">Shree Hariganesh Sweets</h1>
+          <h1 className="text-[20px] font-medium">Sree Hariganesh Sweets</h1>
         </div>
       </Link>
       <Image
@@ -113,8 +113,8 @@ useEffect(() => {
                 </Link>
               ))}
 
-              <Link href="/">
-                <h1 className="absolute font-medium text-2xl bottom-40 right-8">
+              <Link href="/cart" onClick={toggleSelectMenu}>
+              <h1 className="absolute font-medium text-2xl bottom-40 right-8">
                   Cart
                 </h1>
               </Link>
@@ -159,7 +159,7 @@ useEffect(() => {
             {link.name}
           </Link>
         ))}
-        <Link href="/">
+        <Link href="/cart">
           <Image
             src="/assets/cart.png"
             width={48}

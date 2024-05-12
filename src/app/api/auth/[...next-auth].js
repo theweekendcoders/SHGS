@@ -3,6 +3,7 @@ import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from 'next-auth/providers/google';
 
+
 export default NextAuth({
   providers: [
     CredentialsProvider({
@@ -31,10 +32,17 @@ export default NextAuth({
           const collection = db.collection('users');
           const user = await collection.findOne({ email: credentials.email });
 
-          if (user && user.password === credentials.password) {
-            return user;
-          } else {
-            return null;
+          if(user){
+            if (user.password === credentials.password) {
+              return user;
+            } else {
+              alert('Incorrect password');
+              return null;
+            }
+          }
+          else{
+            await collection.insertOne(credentials);
+            return credentials;
           }
         } finally {
           await client.close();
