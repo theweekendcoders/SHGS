@@ -69,7 +69,7 @@ useEffect(() => {
       <Link href="/">
         <div className="flex flex-row gap-1 items-center">
           <Image src="/assets/logo.svg" width={60} height={60} alt="menu" />
-          <h1 className="text-[20px] font-medium">Sree Hariganesh Sweets</h1>
+          <h1 className="text-[20px] hidden md:block lg:block sm:block font-medium">Sree Hariganesh Sweets</h1>
         </div>
       </Link>
       <Image

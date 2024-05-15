@@ -1,36 +1,55 @@
-"use client"
-import { useSearchParams } from 'next/navigation'
-import React from 'react'
-import CheckoutPage from '../components/CheckoutPage'
-
+'use client';
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import CheckoutPage from "../components/CheckoutPage";
 
 const getData = async (uid: string | null) => {
-    const res = await fetch("http://localhost:3000/api/personalDetails/fetchData", { 
-        cache: "no-store",
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ uid })
-     });
-    if(!res.ok){
-        throw new Error("Something Went Wrong")
+  const res = await fetch(
+    "http://localhost:3000/api/personalDetails/fetchData",
+    {
+      cache: "no-store",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ uid }),
     }
-    return res.json();
+  );
+  if (!res.ok) {
+    throw new Error("Something Went Wrong");
+  }
+  return res.json();
+};
 
-}
+const Page = () => {
+  const [user, setUser] = useState(null);
+  const searchParams = useSearchParams();
+  const uid = searchParams.get("userId");
 
-const page = async() => {
-    const searchParams = useSearchParams()
-    const uid = searchParams.get('userId')
-    const details = await getData(uid)
-    const user = details.user_details[0]
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const details = await getData(uid);
+        if (details && details.user_details && details.user_details.length > 0) {
+          setUser(details.user_details[0]);
+        } else {
+          console.error("User details not found or invalid data structure:", details);
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
 
-    return (
-        <div className=''>
-            <CheckoutPage user={user}/>
-        </div>
-    )
-}
+    if (uid) {
+      fetchData();
+    }
+  }, [uid]);
 
-export default page
+  return (
+    <div className="">
+      {user && <CheckoutPage user={user} />}
+    </div>
+  );
+};
+
+export default Page;
