@@ -52,12 +52,12 @@ const Products = ({ products, item_name }) => {
                 key={sweet._id}
                 className="md:w-[300px] lg:w-[350px] border border-black rounded-lg bg-white p-4"
               >
-                {/* <Image
-                    src={sweet.image}
+                <Image
+                    src='https://drive.google.com/uc?export=view&id=1Pr3Ahvfeas5XDtRMVh8J2rPfSIGvQnqY'
                     width={300}
                     height={300}
                     alt={sweet.name}
-                /> */}
+                />
                 <div className="flex flex-row justify-between">
                   <div>
                     <h3>{sweet.name}</h3>
