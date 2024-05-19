@@ -12,7 +12,12 @@ const CheckoutPage = (user) => {
   const { cart } = useContext(CartContext);
   const router = useRouter();
 
-  let deliveryCharge = 60
+  let deliveryCharge = 60;
+  console.log(user.user.city);
+
+  if(user.user.city ==="Arakkonam" | user.user.city ==="Arakonam"){
+    deliveryCharge = 0;
+  }
 
   const calculateTotal = () => {
     return cart?.cartItems?.reduce((total, item) => {

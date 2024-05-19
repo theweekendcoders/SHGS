@@ -176,17 +176,9 @@ const Cart = () => {
               <aside className="md:w-1/4">
                 <article className="border border-gray-200 bg-white shadow-sm rounded mb-5 p-3 lg:p-5">
                   <ul className="mb-5">
-                    <li className="flex justify-between text-gray-600  mb-1">
+                    <li className="text-lg font-bold flex justify-between pt-3">
                       <span>Total price:</span>
-                      <span>₹{calculateTotalPrice()}</span>
-                    </li>
-                    <li className="flex justify-between text-gray-600  mb-1">
-                      <span>Delivery Charges:</span>
-                      <span>₹60</span>
-                    </li>
-                    <li className="text-lg font-bold border-t flex justify-between mt-3 pt-3">
-                      <span>Total price:</span>
-                      <span>₹ {calculateTotalPrice() + 60}</span>
+                      <span>₹ {calculateTotalPrice()}</span>
                     </li>
                   </ul>
 
