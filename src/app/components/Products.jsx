@@ -53,7 +53,7 @@ const Products = ({ products, item_name }) => {
                 className="md:w-[300px] lg:w-[350px] border border-black rounded-lg bg-white p-4"
               >
                 <Image
-                    src='https://drive.google.com/uc?export=view&id=1Pr3Ahvfeas5XDtRMVh8J2rPfSIGvQnqY'
+                    src='https://drive.google.com/uc?export=download&id=1W6IOs_lbHcAkmp0Z_1tHOS0G74ha59fT'
                     width={300}
                     height={300}
                     alt={sweet.name}
