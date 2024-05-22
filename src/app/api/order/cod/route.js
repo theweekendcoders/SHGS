@@ -17,6 +17,8 @@ export const POST = async (req, res) => {
       const optionsTime = { hour: '2-digit', minute: '2-digit'};
       const formattedTime = date.toLocaleTimeString('en-US', optionsTime);
     
+      console.log(data.total)
+
       const orders = await db.collection("orders").insertOne(
         {
             userID:data.user.userId,
@@ -24,7 +26,8 @@ export const POST = async (req, res) => {
             orderedItems:data.cart.cartItems,
             userDetails:data.user,
             orderDate:formattedDate,
-            orderTime: formattedTime
+            orderTime: formattedTime,
+            grandTotal : data.total
         }
       );
 
@@ -34,7 +37,8 @@ export const POST = async (req, res) => {
           orderedItems:data.cart.cartItems,
           orderID:"cod",
           orderDate:formattedDate,
-          orderTime: formattedTime
+          orderTime: formattedTime,
+          grandTotal : data.total
       })
 
       return NextResponse.json({status: 200,},{message: "Order Details Updated",});

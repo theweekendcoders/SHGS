@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useContext } from "react";
+import Image from "next/image";
 import UserDetailsForm from "../components/UserDetailsForm";
 import { paymentUsingRazorpay } from "@/app/actions/payment";
 import { toast } from "react-toastify";
@@ -16,7 +17,7 @@ const CheckoutPage = (user) => {
   console.log(user.user.city);
 
   if(user.user.city ==="Arakkonam" | user.user.city ==="Arakonam"){
-    deliveryCharge = 0;
+    deliveryCharge = 0
   }
 
   const calculateTotal = () => {
@@ -51,7 +52,7 @@ const CheckoutPage = (user) => {
     try {
       console.log(cart.cartItems)
       console.log(user.user)
-      orderDetailsUpdation2(cart, user.user);
+      orderDetailsUpdation2(cart, user.user, grandTotal);
       router.push('/ordered');
       // Additional logic if needed with the options object
     } catch (error) {
@@ -87,7 +88,7 @@ const CheckoutPage = (user) => {
                 progress: undefined,
                 theme: "dark",
               });
-              orderDetailsUpdation1(response, cart, user.user);
+              orderDetailsUpdation1(response, cart, user.user, grandTotal);
               router.push("/ordered");
             } else {
               // Payment failed or was canceled
@@ -139,7 +140,7 @@ const CheckoutPage = (user) => {
                   <p>
                     {item.weight}g x {item.quantity}
                   </p>
-                  <p className="text-justify max-w-[200px]">{item.name}</p>
+                  <p className="max-w-[200px]">{item.name}</p>
                   <p className="">₹ {item.price * item.quantity}</p>
                 </div>
               ))}

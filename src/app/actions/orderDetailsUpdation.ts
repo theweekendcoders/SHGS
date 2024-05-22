@@ -8,13 +8,15 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 export const orderDetailsUpdation1 = async (
   orderData: any,
   cartItems: any,
-  user: any
+  user: any,
+  total:any
 ) => {
 
   const orderdetails = {
     orderData,
     cartItems,
     user,
+    total
   };
 
   const date = new Date();
@@ -30,6 +32,7 @@ export const orderDetailsUpdation1 = async (
       orderData,
       cartItems,
       user,
+      total
     }),
   });
 
@@ -50,7 +53,8 @@ export const orderDetailsUpdation1 = async (
 //COD
 export const orderDetailsUpdation2 = async (
   cart: any,
-  user: any
+  user: any,
+  total:any
 ) => {
 
   console.log("Cart:", cart);
@@ -63,6 +67,7 @@ export const orderDetailsUpdation2 = async (
     body: JSON.stringify({
       cart,
       user,
+      total
     }),
   });
 

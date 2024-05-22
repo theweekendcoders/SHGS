@@ -25,7 +25,8 @@ export const POST = async (req, res) => {
             orderedItems:data.cartItems,
             userDetails:data.user.user,
             orderDate:formattedDate,
-            orderTime: formattedTime
+            orderTime: formattedTime,
+            grandTotal : data.total
         }
       );
 
@@ -35,7 +36,8 @@ export const POST = async (req, res) => {
           orderedItems:data.cartItems,
           orderID:data.orderData.razorpay_order_id,
           orderDate:formattedDate,
-          orderTime: formattedTime
+          orderTime: formattedTime,
+          grandTotal : data.total
       })
 
      
