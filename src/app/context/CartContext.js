@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/router";
 import { createContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
 
 const CartContext = createContext();
 
@@ -48,10 +49,25 @@ export const CartProvider = ({ children }) => {
   };
 
   const deleteItemFromCart = (id) => {
+    const itemToRemove = cart?.cartItems?.find((item) => item.product === id);
     const newCartItems = cart?.cartItems?.filter((item) => item.product !== id);
     localStorage.setItem("cart", JSON.stringify({ cartItems: newCartItems }));
     setCartToState();
-  }
+  
+    if (itemToRemove) {
+      toast.success(`${itemToRemove.name} has been removed from the cart`, {
+        position: "bottom-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+  };
+  
 
   return (
     <CartContext.Provider

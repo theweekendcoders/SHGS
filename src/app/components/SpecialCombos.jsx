@@ -1,8 +1,26 @@
-// "use client";
+"use client";
+
 import React from "react";
 import Image from "next/image";
+import CartContext from "../context/CartContext";
+import { useContext } from "react";
 
 const SpecialCombos = ({ combos }) => {
+
+  const { addItemToCart } = useContext(CartContext);
+  const addToCartHandler = (sweet) => {
+    addItemToCart({
+      product: sweet._id,
+      name: sweet.name,
+      // image: sweet.image,
+      price: sweet.price,
+      quantity: 1,
+      weight: 250
+    });
+    window.location.reload();
+    console.log(sweet.name);
+    console.log(" successfully added to the Cart!");  
+  };
   return (
     <section className="my-14 ">
       <h1 className="text-center font-normal text-3xl">Special Combos</h1>
@@ -28,9 +46,21 @@ const SpecialCombos = ({ combos }) => {
                 <p className="flex justify-center items-center text-xl text-red-500 mt-4">{item.special} Special</p>
               </div>
               <div className="p-2 flex justify-center items-center ">
-              <button className="px-10 py-3 bg-[#F74541] rounded-full text-white font-medium">
-                Add
-              </button>
+              {(item.stock == true || item.stock === "inStock") ? (
+                    <button
+                      onClick={() => addToCartHandler(item)}
+                      className="px-auto py-3 bg-[#F74541] w-[100px] h-[50px] text-center rounded-full text-white font-medium"
+                    >
+                      Add
+                    </button>
+                  ) : (
+                    <button
+                      disabled
+                      className="px-12 py-3 bg-gray-400 rounded-full text-white font-medium"
+                    >
+                      Out of Stock
+                    </button>
+                  )}
               </div>
               </div>
             </div>

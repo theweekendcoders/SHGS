@@ -5,7 +5,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import SmoothSrolling from "./animations/SmoothScrolling";
 import { GlobalProvider } from "../app/provider/GlobalProvider";
-// import CartProvider from "../../providers/CartProvider";
+import { ToastContainer } from "./toast";
 import { AuthContextProvider } from "./context/AuthContext";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -32,9 +32,10 @@ export default function RootLayout({
       <body className={`${poppins.className} p-6 mx-auto xl:max-w-screen-2xl`}>
         <SmoothSrolling>
           <AuthContextProvider>
-          <Navbar />
-          <GlobalProvider>{children}</GlobalProvider>
+            <Navbar />
+            <GlobalProvider>{children}</GlobalProvider>
           </AuthContextProvider>
+          <ToastContainer />
           <Footer />
         </SmoothSrolling>
       </body>

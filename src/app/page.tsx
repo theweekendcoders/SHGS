@@ -17,26 +17,32 @@ export default async function Home() {
   const categories = [
     {
       name: "Sweets",
+      image: "/assets/sweets.jpeg",
       link: "/menu/sweets",
     },
     {
       name: "Savouries",
+      image: "/assets/savouries.jpeg",
       link: "/menu/savouries",
     },
     {
       name: "Snacks",
+      image: "/assets/snacks.jpeg",
       link: "/menu/snacks",
     },
     {
       name: "Vathal",
+      image: "/assets/vathal.jpeg",
       link: "/menu/vathal",
     },
     {
       name: "Milk Items",
+      image: "/assets/milk_items.jpeg",
       link: "/menu/milk_items",
     },
     {
       name: "Poli",
+      image: "/assets/poli.jpeg",
       link: "/menu/poli",
     },
   ];
@@ -44,9 +50,9 @@ export default async function Home() {
   return (
     <div>
       <div className="">
-        <section className="my-14 grid grid-cols-1 lg:grid-cols-2 lg:gap-10 lg:items-center">
+        <section className="my-14 xl:my-4 lg:my-4 flex flex-row lg:gap-10 lg:items-center lg:mx-10">
           <div className="text-center lg:text-left">
-            <h1 className=" text-[32px] xl:text-[48px]">
+            <h1 className="text-[32px] xl:text-[48px]">
               Unleash a flavor symphony with every bite
             </h1>
             <h2 className="text-[#8C8C8C] text-[18px] xl:text-[22px] my-4">
@@ -58,11 +64,11 @@ export default async function Home() {
           </div>
 
           <Image
-            src="/assets/murukku.jpeg"
-            width={1000}
-            height={1000}
+            src="/assets/hero1.jpeg"
+            width={800}
+            height={800}
             alt="hero image"
-            className="w-full hidden lg:flex rounded-xl"
+            className="w-full hidden lg:block rounded-xl w-[250px] h-[750px]"
           />
         </section>
 
@@ -78,9 +84,9 @@ export default async function Home() {
                   <div className="bg-[#F74541] shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 duration-300">
                     <div className="h-40 md:h-48 overflow-hidden">
                       <img
-                        src="/assets/murukku.jpeg"
+                        src={category.image}
                         alt={category.name}
-                        className="object-cover object-center w-full h-full transition-opacity duration-300"
+                        className="object-cover w-full h-full transition-opacity duration-300"
                       />
                     </div>
                     <div className="px-6 py-4">

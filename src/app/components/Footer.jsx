@@ -39,7 +39,7 @@ const Footer = () => {
   return (
     <>
     {/* <BlackCursor /> */}
-      <section className="bg-gray-100 flex flex-col text-black p-4 md:gap-8">
+      <section className="bg-white flex flex-col text-black p-4 md:gap-8">
         <div className="flex flex-col gap-10 lg:flex-row lg:justify-between">
           <div className="mt-4">
             <Link href="/" className="flex flex-row gap-4 justify-center items-center">

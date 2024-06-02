@@ -65,7 +65,7 @@ useEffect(() => {
   };
 
   return (
-    <div className="flex flex-row bg-gray-100 p-4 justify-between items-center">
+    <div className="flex flex-row bg-white p-4 justify-between items-center">
       <Link href="/">
         <div className="flex flex-row gap-1 items-center">
           <Image src="/assets/logo.svg" width={60} height={60} alt="menu" />

@@ -17,7 +17,7 @@ export const POST = async (req, res) => {
       const optionsTime = { hour: '2-digit', minute: '2-digit'};
       const formattedTime = date.toLocaleTimeString('en-US', optionsTime);
     
-      console.log(data.total)
+      // console.log(data.total)
 
       const orders = await db.collection("orders").insertOne(
         {

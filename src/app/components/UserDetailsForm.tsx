@@ -91,7 +91,7 @@ const UserDetailsForm = (data:any) => {
                         <input type="text" name="pincode" id="pincode" placeholder="Enter your pincode" value={formValues.pincode} onChange={handleInputChange} required maxLength={6} className='w-full p-2 border-2 border-gray-500 rounded-sm lg:w-[300px]' />
                     </div>
                 </div>
-                <input type="submit" className='w-full p-4 bg-black text-white rounded-sm my-10 lg:w-[200px] hover:scale-105 hover:cursor-pointer' value='Save' />
+                <input type="submit" onClick={() => window.location.reload()} className='w-full p-4 bg-black text-white rounded-sm my-10 lg:w-[200px] hover:scale-105 hover:cursor-pointer' value='Save' />
             </div>
         </form>
 

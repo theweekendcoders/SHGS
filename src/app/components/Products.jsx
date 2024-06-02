@@ -2,6 +2,7 @@
 import React, { useContext } from "react";
 import Image from "next/image";
 import CartContext from "../context/CartContext";
+import { toast } from "react-toastify";
 
 const Products = ({ products, item_name }) => {
   const groupedSweets = {};
@@ -18,26 +19,47 @@ const Products = ({ products, item_name }) => {
   });
 
   const addToCartHandler = (sweet) => {
-    addItemToCart({
-      product: sweet._id,
-      name: sweet.name,
-      image: sweet.image,
-      price: sweet.price,
-      quantity: 1,
-      weight: 250
-    });
-    console.log(sweet.name);
-    console.log(" successfully added to the Cart!");
+    const cartItems = JSON.parse(localStorage.getItem('cart'))?.cartItems || [];
+    const isItemInCart = cartItems.some(item => item.product === sweet._id);
+  
+    if (isItemInCart) {
+      toast.info(`${sweet.name} is already in the cart`, {
+        position: "bottom-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    } else {
+      addItemToCart({
+        product: sweet._id,
+        name: sweet.name,
+        image: sweet.image,
+        price: sweet.price,
+        quantity: 1,
+        weight: 250,
+      });
+  
+      toast.success(`${sweet.name} successfully added to the cart!`, {
+        position: "bottom-right",
+        autoClose: 4000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+  
+      // window.location.reload();
+      console.log(sweet.name);
+      console.log(" successfully added to the Cart!");
+    }
   };
 
-  const refreshPage = () => {
-    window.location.reload();
-  };
-
-  const combinedHandler = (sweet) => {
-    addToCartHandler(sweet);
-    refreshPage();
-  };
 
   return (
     <div>
@@ -64,9 +86,9 @@ const Products = ({ products, item_name }) => {
                     <h3 className="text-xl">{sweet.name}</h3>
                     <p className="text-green-600">Price: ₹{sweet.price}</p>
                   </div>
-                  {sweet.stock ? (
+                  {(sweet.stock == true || sweet.stock === "inStock") ? (
                     <button
-                      onClick={() => combinedHandler(sweet)}
+                      onClick={() => addToCartHandler(sweet)}
                       className="px-auto py-3 bg-[#F74541] w-[100px] h-[50px] text-center rounded-full text-white font-medium"
                     >
                       Add
