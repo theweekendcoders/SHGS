@@ -36,15 +36,6 @@ export const orderDetailsUpdation1 = async (
     }),
   });
 
-  // await resend.emails.send({
-  //   from: "Sree Hariganesh Sweets <OrderConfirmation@hariganeshsweets.com>",
-  //   to: orderdetails.user.email,
-  //   subject: "Order Confirmation",
-  //   react: React.createElement(
-  //     Receipt, {data: orderdetails, date: formattedDate}
-  //   )
-  // })
-
   const data = await response.json();
   return data;
 };

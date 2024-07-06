@@ -8,9 +8,10 @@ import { toast } from "react-toastify";
 import { useRouter } from "next/navigation";
 import CartContext from "../context/CartContext";
 import { orderDetailsUpdation1, orderDetailsUpdation2 } from "../actions/orderDetailsUpdation";
+import { Mailer1, Mailer2 } from "../actions/mailer";
 
 const CheckoutPage = ({ user }) => {
-  const { cart, setCart } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
   const router = useRouter();
 
   let deliveryCharge = 60;
@@ -45,7 +46,7 @@ const CheckoutPage = ({ user }) => {
   
   const clearCart = () => {
     localStorage.removeItem("cart");
-    setCart({ cartItems: [] }); // Update cart context to clear items
+    // setCart({ cartItems: [] }); // Update cart context to clear items
   };
 
 
@@ -77,6 +78,7 @@ const CheckoutPage = ({ user }) => {
       console.log(cart.cartItems);
       console.log(user);
       await orderDetailsUpdation2(cart, user, grandTotal);
+      await Mailer2(cart, user, grandTotal);
       clearCart();
       toast.success("Order placed successfully via COD", {
         position: "bottom-right",
@@ -91,16 +93,6 @@ const CheckoutPage = ({ user }) => {
       router.push("/ordered");
     } catch (error) {
       console.error("Failed to handle COD", error);
-      // toast.error("COD Initialization Failed", {
-      //   position: "bottom-right",
-      //   autoClose: 4000,
-      //   hideProgressBar: false,
-      //   closeOnClick: true,
-      //   pauseOnHover: true,
-      //   draggable: true,
-      //   progress: undefined,
-      //   theme: "dark",
-      // });
     }
   };
   
@@ -132,8 +124,9 @@ const CheckoutPage = ({ user }) => {
                 theme: "dark",
               });
               await orderDetailsUpdation1(response, cart, user, grandTotal);
-              clearCart();
+              await Mailer1(response, cart, user, grandTotal);
               router.push("/ordered");
+              clearCart();
             } else {
               toast.error("Payment Failed", {
                 position: "bottom-right",
@@ -246,7 +239,7 @@ const CheckoutPage = ({ user }) => {
             </div>
 
             <div className="bg-slate-800 text-white p-4 flex flex-col gap-4 rounded lg:w-[400px]">
-              <h1 className="font-medium text-xl">Delivery Through</h1>
+              <h1 className="font-medium text-xl">Delivery</h1>
 
               <hr />
               <div>

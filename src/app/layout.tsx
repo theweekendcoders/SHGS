@@ -29,7 +29,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} p-6 mx-auto xl:max-w-screen-2xl`}>
+      <body className={`${poppins.className} p-6 mx-auto xl:max-w-screen-2xl `}>
         <SmoothSrolling>
           <AuthContextProvider>
             <Navbar />

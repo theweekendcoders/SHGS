@@ -11,11 +11,11 @@ const Products = ({ products, item_name }) => {
 
   // Group the sweets by category
   products.forEach((sweet) => {
-    const category = sweet.category;
-    if (!groupedSweets[category]) {
-      groupedSweets[category] = [];
+    const type = sweet.type;
+    if (!groupedSweets[type]) {
+      groupedSweets[type] = [];
     }
-    groupedSweets[category].push(sweet);
+    groupedSweets[type].push(sweet);
   });
 
   const addToCartHandler = (sweet) => {
@@ -63,13 +63,13 @@ const Products = ({ products, item_name }) => {
 
   return (
     <div>
-      {Object.keys(groupedSweets).map((category) => (
-        <div key={category} className="my-10">
+      {Object.keys(groupedSweets).map((type) => (
+        <div key={type} className="my-10">
           <h2 className="font-normal text-3xl my-14 capitalize">
-            {category === "undefined" ? item_name : category}
+            {type === "undefined" ? item_name : type}
           </h2>
           <div className="flex flex-col gap-10 md:gap-10 lg:gap-20 md:flex-row flex-wrap ">
-            {groupedSweets[category].map((sweet) => (
+            {groupedSweets[type].map((sweet) => (
               <div
                 key={sweet._id}
                 className="flex flex-col gap-6 justify-center items-center md:w-[300px] lg:w-[350px] shadow-xl rounded-lg bg-white p-4"

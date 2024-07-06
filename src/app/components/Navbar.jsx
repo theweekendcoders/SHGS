@@ -37,6 +37,10 @@ useEffect(() => {
       link: "/menu/sweets",
     },
     {
+      name: "Milk Items",
+      link: "/menu/milk_items",
+    },
+    {
       name: "Savouries",
       link: "/menu/savouries",
     },
@@ -47,10 +51,6 @@ useEffect(() => {
     {
       name: "Vathal",
       link: "/menu/vathal",
-    },
-    {
-      name: "Milk Items",
-      link: "/menu/milk_items",
     },
     {
       name: "Poli",
@@ -65,17 +65,17 @@ useEffect(() => {
   };
 
   return (
-    <div className="flex flex-row bg-white p-4 justify-between items-center">
+    <div className="flex flex-row  p-4 justify-between items-center">
       <Link href="/">
         <div className="flex flex-row gap-1 items-center">
-          <Image src="/assets/logo.svg" width={60} height={60} alt="menu" />
-          <h1 className="text-[20px] hidden md:block lg:block sm:block font-medium">Sree Hariganesh Sweets</h1>
+          <Image src="/assets/logo.svg" width={100} height={100} alt="menu" />
+          <h1 className="text-[20px] hidden md:block lg:block sm:block font-medium">SREE HARIGANESH SWEETS</h1>
         </div>
       </Link>
       <Image
         src="/assets/menu.svg"
-        width={32}
-        height={32}
+        width={60}
+        height={60}
         alt="menu"
         className="flex xl:hidden"
         onClick={toggleSelectMenu}

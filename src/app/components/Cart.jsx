@@ -55,7 +55,7 @@ const Cart = () => {
 
   return (
     <>
-      {cart?.cartItems?.length < 1 ? (
+      {cart?.cartItems?.length === 0 ? (
         <section className="py-5 sm:py-7">
           <div>
             <div className="flex flex-col justify-center items-center h-[600px] md:h-[700px] gap-4">
@@ -76,13 +76,6 @@ const Cart = () => {
         </section>
       ) : (
         <>
-          <section className="py-5 sm:py-7 bg-blue-100">
-            <div className="container max-w-screen-xl mx-auto px-4">
-              <h2 className="text-3xl font-semibold mb-2">
-                {cart?.cartItems?.length || 0} Item(s) in Cart
-              </h2>
-            </div>
-          </section>
           <section className="py-10">
             <div className="max-w-screen-xl mx-auto px-4">
               <div className="flex flex-col md:flex-row gap-4">

@@ -1,12 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import SpecialCombos from "./components/SpecialCombos";
-
+import Shapes from "./components/Shapes";
 
 const getData = async () => {
-  const res = await fetch("http://localhost:3000/api/special_combos", { cache: "no-store" });
-  if(!res.ok){
-      throw new Error("Something Went Wrong")
+  const res = await fetch("http://localhost:3000/api/special_combos", {
+    cache: "no-store",
+  });
+  if (!res.ok) {
+    throw new Error("Something Went Wrong");
   }
   return res.json();
 };
@@ -19,6 +21,11 @@ export default async function Home() {
       name: "Sweets",
       image: "/assets/sweets.jpeg",
       link: "/menu/sweets",
+    },
+    {
+      name: "Milk Items",
+      image: "/assets/milk_items.jpeg",
+      link: "/menu/milk_items",
     },
     {
       name: "Savouries",
@@ -36,11 +43,6 @@ export default async function Home() {
       link: "/menu/vathal",
     },
     {
-      name: "Milk Items",
-      image: "/assets/milk_items.jpeg",
-      link: "/menu/milk_items",
-    },
-    {
       name: "Poli",
       image: "/assets/poli.jpeg",
       link: "/menu/poli",
@@ -50,7 +52,7 @@ export default async function Home() {
   return (
     <div>
       <div className="">
-        <section className="my-14 xl:my-4 lg:my-4 flex flex-row lg:gap-10 lg:items-center lg:mx-10">
+        <section className="my-14 xl:my-4 lg:my-4 grid min-h-[70vh] grid-cols-1 items-center md:justify-between md:grid-cols-2 lg:gap-10 lg:items-center lg:mx-10">
           <div className="text-center lg:text-left">
             <h1 className="text-[32px] xl:text-[48px]">
               Unleash a flavor symphony with every bite
@@ -62,14 +64,7 @@ export default async function Home() {
               Taste Now
             </button>
           </div>
-
-          <Image
-            src="/assets/hero1.jpeg"
-            width={800}
-            height={800}
-            alt="hero image"
-            className="w-full hidden lg:block rounded-xl w-[250px] h-[750px]"
-          />
+          <Shapes />
         </section>
 
         <section className="mb-14">
@@ -81,7 +76,7 @@ export default async function Home() {
             {categories.map((category, index) => (
               <Link href={category.link} key={index}>
                 <div key={index} className="relative overflow-hidden">
-                  <div className="bg-[#F74541] shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 duration-300">
+                  <div className="bg-gradient-to-br from-[#d92f8a] via-[#d92f8a] to-[#214c9e] shadow-lg rounded-lg overflow-hidden transition-transform transform hover:scale-105 duration-300">
                     <div className="h-40 md:h-48 overflow-hidden">
                       <img
                         src={category.image}
@@ -124,9 +119,7 @@ export default async function Home() {
           </div>
         </section>
 
-
-
-        <SpecialCombos combos={items}/>
+        <SpecialCombos combos={items} />
       </div>
     </div>
   );
