@@ -1,7 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { link } from "fs";
 // import BlackCursor from "./BlackCursor";
 
 const Footer = () => {
@@ -39,7 +38,7 @@ const Footer = () => {
   return (
     <>
     {/* <BlackCursor /> */}
-      <section className="bg-white flex flex-col text-black p-4 md:gap-8">
+      <section className="bg-white flex flex-col text-black p-4 md:gap-8 backdrop-blur-md bg-white/20 rounded-xl">
         <div className="flex flex-col gap-10 lg:flex-row lg:justify-between">
           <div className="mt-4">
             <Link href="/" className="flex flex-row gap-4 justify-center items-center">
@@ -100,7 +99,7 @@ const Footer = () => {
           </p>
           <p className="font-light text-lg mb-4">
             Powered by{" "}
-            <Link href="https://theweekendcoders.vercel.app" className="underline text-red-500">
+            <Link href="https://theweekendcoders.vercel.app" className="underline text-red-500" target="_blank">
               theweekendcoders
             </Link>
           </p>

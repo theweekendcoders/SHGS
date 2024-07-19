@@ -23,7 +23,7 @@ export const POST = async (req, res) => {
           uid:data.uid,
           email:data.email,
           displayName:data.displayName,
-          phone: data.phone,
+          mobile: data.mobile,
           photo: data.photo
         });
 

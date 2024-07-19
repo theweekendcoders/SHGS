@@ -1,5 +1,7 @@
 import React from 'react'
 import Products from "@/app/components/Products"
+import Navbar from '@/app/components/Navbar';
+import Footer from '@/app/components/Footer';
 
 const getProductData = async (product:string) => {
     const res = await fetch(`http://localhost:3000/api/menu/${product}`, { cache: "no-store" });
@@ -18,7 +20,9 @@ const page = async({params}:any) => {
       }
   return (
     <div>
+    <Navbar />
     <Products products={mostFB} item_name={product} />
+    <Footer />
     </div>
   )
 }

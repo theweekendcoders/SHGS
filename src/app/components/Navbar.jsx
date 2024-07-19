@@ -65,11 +65,11 @@ useEffect(() => {
   };
 
   return (
-    <div className="flex flex-row  p-4 justify-between items-center">
+    <div className="flex flex-row px-4 justify-between items-center">
       <Link href="/">
         <div className="flex flex-row gap-1 items-center">
           <Image src="/assets/logo.svg" width={100} height={100} alt="menu" />
-          <h1 className="text-[20px] hidden md:block lg:block sm:block font-medium">SREE HARIGANESH SWEETS</h1>
+          <h1 className="text-[20px] hidden md:block lg:block sm:block font-medium">Sree Hariganesh Sweets</h1>
         </div>
       </Link>
       <Image
@@ -84,18 +84,18 @@ useEffect(() => {
         <div
           className={
             selectMenu
-              ? "absolute bottom-0 right-0 top-0 z-10 h-[100%] flex flex-col gap-4 text-white backdrop-blur-2xl bg-black/40 w-[300px] pr-4 pt-14 ease-in duration-200"
-              : "absolute bottom-0 right-0 hidden top-0 z-10 h-screen flex-col gap-4 text-white backdrop-blur-2xl bg-black/40 w-[300px] pr-4 pt-14 ease-in duration-200"
+              ? "absolute bottom-0 right-0 top-0 z-10 h-[100%] flex flex-col gap-4 text-white backdrop-blur-2xl bg-black/40 w-[300px] pr-8 pt-10 ease-in duration-200 rounded-lg m-4 h-[800px]"
+              : "hidden"
           }
         >
           <div className="flex flex-col justify-end items-end gap-10 w-full">
             <Image
               src="/assets/close.svg"
-              width={30}
-              height={30}
+              width={100}
+              height={100}
               alt="close"
               onClick={toggleSelectMenu}
-              className=" w-[32px] h-[32px] ml-8 xl:hidden"
+              className=" w-[48px] h-[48px] ml-8"
             />
             <div className="flex flex-col gap-8 items-end">
               {Links.map((link, index) => (
@@ -104,7 +104,7 @@ useEffect(() => {
                   key={index}
                   className={`relative font-medium text-2xl ${
                     pathname === link.link
-                      ? `underline decoration-wavy underline-offset-8`
+                      ? `underline scale-105`
                       : ` underline-offset-8 after:bg-white after:absolute after:h-[2px] after:w-0 after:bottom-0 after:left-0 after:top-7 hover:after:w-full after:transition-all after:duration-300 cursor-pointer`
                   }`}
                   onClick={toggleSelectMenu}
@@ -120,21 +120,24 @@ useEffect(() => {
               </Link>
 
               {loading ? null : !user ? (
-                <Link href="/login">
+                <Link href="/login" onClick={toggleSelectMenu}>
                   <h1 className="absolute font-medium text-2xl bottom-24 right-8">
                     Login
                   </h1>
                 </Link>
               ) : (
                 <div className="">
-                  <Link href="/profile">
+                  <Link href="/profile" onClick={toggleSelectMenu}>
                     <h1 className="absolute font-medium text-2xl bottom-28 right-8">
                       Profile
                     </h1>
                   </Link>
                   <button
                     className="absolute font-medium text-2xl bottom-16 right-8"
-                    onClick={handleSignOut}
+                    onClick={() => {
+                      toggleSelectMenu();
+                      handleSignOut();
+                    }}
                   >
                     Logout
                   </button>
@@ -192,7 +195,7 @@ useEffect(() => {
             </Link>
             <button
               onClick={logOut}
-              className="px-10 py-3 bg-[#F74541] text-white font-medium hover:scale-105 duration-150"
+              className="px-10 py-3 bg-[#F74541] text-white font-medium hover:scale-105 duration-150 rounded-xl"
             >
               Logout
             </button>

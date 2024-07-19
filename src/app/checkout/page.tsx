@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import CheckoutPage from "../components/CheckoutPage";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const getData = async (uid: string | null) => {
   const res = await fetch(
@@ -47,7 +49,9 @@ const Page = () => {
 
   return (
     <div className="">
+      <Navbar/>
       {user && <CheckoutPage user={user} />}
+      <Footer />
     </div>
   );
 };

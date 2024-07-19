@@ -22,13 +22,22 @@ export const CartProvider = ({ children }) => {
     );
   };
 
-  const addItemToCart = async ({ product, name, image, price, quantity = 1, weight = 250 }) => {
-    const item = {
-      product,
-      name,
-      image,
-      price,
-      quantity,
+  const addItemToCart = async ({ 
+    product, 
+    name, 
+    image, 
+    category, 
+    price, 
+    quantity = 1, 
+    weight = (category === 'vathal' || category === 'savouries' || (category === 'snacks' && name !== 'Veg Samosa')) ? 100 : 250
+  }) => {
+    const item = { 
+      product, 
+      name, 
+      image, 
+      category, 
+      price, 
+      quantity, 
       weight,
     };
 
