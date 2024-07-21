@@ -69,9 +69,11 @@ useEffect(() => {
       <Link href="/">
         <div className="flex flex-row gap-1 items-center">
           <Image src="/assets/logo.svg" width={100} height={100} alt="menu" />
-          <h1 className="text-[20px] hidden md:block lg:block sm:block font-medium">Sree Hariganesh Sweets</h1>
+          <h1 className="text-[20px] hidden md:block sm:block font-medium">Sree Hariganesh Sweets</h1>
         </div>
       </Link>
+
+      {/* HamburgerMenu */}
       <Image
         src="/assets/menu.svg"
         width={60}
@@ -148,7 +150,8 @@ useEffect(() => {
         </div>
       )}
 
-      <div className="hidden xl:flex lg:flex-row lg:justify-between lg:items-center text-black text-lg gap-10 font-normal tracking-tight">
+      {/* DesktopMenu */}
+      <div className="hidden xl:flex lg:flex-row lg:justify-between lg:items-center text-black lg:text-sm xl:text-lg gap-10 font-normal tracking-tight">
         {Links.map((link, index) => (
           <Link
             href={link.link}

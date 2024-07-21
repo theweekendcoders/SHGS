@@ -15,7 +15,7 @@ export const POST = async (req, res) => {
         service: "gmail",
         auth: {
           user: "hariganeshsweets@gmail.com",
-          pass: "vrfw izpn pxem sqec", // changed2
+          pass: process.env.EMAIL_PASS // changed2
         },
       });
 
@@ -49,8 +49,8 @@ export const POST = async (req, res) => {
                 <thead>
                     <tr>
                         <th>Items</th>
-                        <th>Quantity</th>
                         <th>Weight</th>
+                        <th>Quantity</th>
                         <th>Price</th>
                     </tr>
                 </thead>
@@ -58,9 +58,9 @@ export const POST = async (req, res) => {
                     ${cart.map(item => `
                         <tr class="item">
                             <td><strong>${item.name}</strong></td>
-                            <td>${item.quantity}</td>
-                            <td>${item.weight}g</td>
-                            <td>₹${item.price} x ${item.quantity}</td>
+                            ${item.name === 'Veg Samosa' || item.category === 'poli' ? `<td>-</td>` : `<td>${item.weight}g</td>`}
+                            ${item.name === 'Veg Samosa' || item.category === 'poli' ? `<td>${item.quantity*5} Pieces</td>` : `<td>${item.quantity} Pack</td>`}
+                            <td>₹${item.price*item.quantity}</td>
                         </tr>
                     `).join('')}
                 </tbody>
@@ -101,6 +101,7 @@ export const POST = async (req, res) => {
                   tr { border-bottom: 1px solid #cccc; }
                   .customer-info { margin-top: 20px; background-color: #f9f9f9; text-align: start; padding: 15px; border-radius: 5px; border: 2px solid black;}
                   .total { font-weight: bold; margin-top: 20px; text-align: right; }
+                  .note { text-align: center; margin: 20px; text-color: black; padding: 10px; background-color: #f7f751; border-radius: 5px; border: 2px solid #e23123; }
             </style>
         </head>
         <body>
@@ -113,8 +114,8 @@ export const POST = async (req, res) => {
                 <thead>
                     <tr>
                         <th>Items</th>
-                        <th>Quantity</th>
                         <th>Weight</th>
+                        <th>Quantity</th>
                         <th>Price</th>
                     </tr>
                 </thead>
@@ -122,13 +123,16 @@ export const POST = async (req, res) => {
                     ${cart.map(item => `
                         <tr class="item">
                             <td><strong>${item.name}</strong></td>
-                            <td>${item.quantity}</td>
-                            <td>${item.weight}g</td>
-                            <td>₹${item.price} x ${item.quantity}</td>
+                            ${item.name === 'Veg Samosa' || item.category === 'poli' ? `<td>-</td>` : `<td>${item.weight}g</td>`}
+                             ${item.name === 'Veg Samosa' || item.category === 'poli' ? `<td>${item.quantity*5} Pieces</td>` : `<td>${item.quantity} Pack</td>`}
+                            <td>₹${item.price*item.quantity}</td>
                         </tr>
                     `).join('')}
                 </tbody>
             </table>
+            </div>
+            <div class"note"> 
+            <p>Note: Delivery charge is just ₹60! and for people from Arakkonam delivery charge is literally ZERO!</p>
             </div>
             <div class="total">
               <h2>Grand Total: ₹${grandTotal}</h2>

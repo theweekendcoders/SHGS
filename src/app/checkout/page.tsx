@@ -50,7 +50,7 @@ const Page = () => {
   return (
     <div className="">
       <Navbar/>
-      {user && <CheckoutPage user={user} />}
+      {user && <CheckoutPage User={user} />}
       <Footer />
     </div>
   );
