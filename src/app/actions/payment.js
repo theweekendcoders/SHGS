@@ -1,7 +1,7 @@
 "use server"
 
 export const paymentUsingRazorpay = async(amount) => {
-  const response = await fetch("http://localhost:3000/api/checkout", {
+  const response = await fetch("https://shgs.vercel.app/api/checkout", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

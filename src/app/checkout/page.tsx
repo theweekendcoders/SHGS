@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 
 const getData = async (uid: string | null) => {
   const res = await fetch(
-    "http://localhost:3000/api/personalDetails/fetchData",
+    "https://shgs.vercel.app/api/personalDetails/fetchData",
     {
       cache: "no-store",
       method: "POST",

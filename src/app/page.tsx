@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 import Carousel from "./components/Carousel";
 
 const getData = async () => {
-  const res = await fetch("http://localhost:3000/api/special_combos", {
+  const res = await fetch("https://shgs.vercel.app/api/special_combos", {
     cache: "no-store",
   });
   if (!res.ok) {
