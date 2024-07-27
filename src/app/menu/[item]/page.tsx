@@ -4,7 +4,7 @@ import Navbar from '@/app/components/Navbar';
 import Footer from '@/app/components/Footer';
 
 const getProductData = async (product:string) => {
-    const res = await fetch(`https://shgs.vercel.app/api/menu/${product}`, { cache: "no-store" });
+    const res = await fetch(`http://localhost:3000/api/menu/${product}`, { cache: "no-store" });
     if(!res.ok){
         throw new Error("Something Went Wrong")
     }

@@ -23,7 +23,7 @@ export const orderDetailsUpdation1 = async (
   const options:any = { month: 'long', day: '2-digit', year: 'numeric' };
   const formattedDate = date.toLocaleDateString('en-US', options);
 
-  const response = await fetch("https://shgs.vercel.app/api/order/razorpay", {
+  const response = await fetch("http://localhost:3000/api/order/razorpay", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -50,7 +50,7 @@ export const orderDetailsUpdation2 = async (
 
   console.log("Cart:", cart);
 
-  const response = await fetch("https://shgs.vercel.app/api/order/cod", {
+  const response = await fetch("http://localhost:3000/api/order/cod", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

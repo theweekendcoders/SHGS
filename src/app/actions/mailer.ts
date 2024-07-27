@@ -12,7 +12,7 @@ export const Mailer1 = async (
     const User = user as String;
     const GrandTotal = grandTotal as String;
     
-    const res = await fetch("https://shgs.vercel.app/api/mail", {
+    const res = await fetch("http://localhost:3000/api/mail", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
