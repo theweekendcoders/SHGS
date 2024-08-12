@@ -17,7 +17,7 @@ export const personalDetails = async(formdata: FormData, userId: string|null) =>
     const state = formdata.get("state")
     const pincode = formdata.get("pincode")
 
-    const res = await fetch("http://localhost:3000/api/personalDetails", {
+    const res = await fetch("https://shgs.vercel.app/api/personalDetails", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
