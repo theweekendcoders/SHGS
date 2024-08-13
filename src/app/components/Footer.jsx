@@ -1,10 +1,6 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {
-  RxInstagramLogo,
-  RxFacebookLogo,
-} from "react-icons/rx";
 // import BlackCursor from "./BlackCursor";
 
 const Footer = () => {
