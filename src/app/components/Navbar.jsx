@@ -65,21 +65,25 @@ useEffect(() => {
   };
 
   return (
-    <div className="flex flex-row px-4 justify-between items-center">
+    <div className="flex flex-row justify-between items-center">
       <Link href="/">
         <div className="flex flex-row gap-1 items-center">
-          <Image src="/assets/logo.svg" width={100} height={100} alt="menu" />
-          <h1 className="text-[20px] hidden md:block sm:block font-medium">Sree Hariganesh Sweets</h1>
+          <Image src="/assets/logo.svg" width={100} height={100} alt="menu" className="w-[100px] h-[100px]" />
+          <h1 className="text-[20px] hidden md:block sm:block font-medium">Sree HariGanesh Sweets</h1>
+          <div className="px-1">
+          <h1 className="text-[22px] md:hidden font-bold">HariGanesh</h1>
+          <h6 className="text-[14px] md:hidden ">Sweets & Savouries</h6>
+          </div>
         </div>
       </Link>
 
       {/* HamburgerMenu */}
       <Image
-        src="/assets/menu.svg"
-        width={60}
-        height={60}
+        src="/assets/menu.png"
+        width={50}
+        height={50}
         alt="menu"
-        className="flex xl:hidden"
+        className="flex xl:hidden text-white"
         onClick={toggleSelectMenu}
       />
       {selectMenu && (

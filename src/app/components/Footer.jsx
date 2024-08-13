@@ -1,6 +1,10 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  RxInstagramLogo,
+  RxFacebookLogo,
+} from "react-icons/rx";
 // import BlackCursor from "./BlackCursor";
 
 const Footer = () => {
@@ -37,11 +41,14 @@ const Footer = () => {
 
   return (
     <>
-    {/* <BlackCursor /> */}
+      {/* <BlackCursor /> */}
       <section className="bg-white flex flex-col text-black p-4 md:gap-8 backdrop-blur-md bg-white/20 rounded-xl">
         <div className="flex flex-col gap-10 lg:flex-row lg:justify-between">
           <div className="mt-4">
-            <Link href="/" className="flex flex-row gap-4 justify-center items-center">
+            <Link
+              href="/"
+              className="flex flex-row gap-4 justify-center items-center md:justify-start md:items-left"
+            >
               <Image
                 src="/assets/logo.svg"
                 width={120}
@@ -49,8 +56,25 @@ const Footer = () => {
                 alt="Logo"
                 className="w-[64px] h-[64px] md:w-[120px] md:h-[120px]"
               />
-              <span className="text-[20px] md:text-[25px] lg:text-[28px] font-regular">Sree Hariganesh Sweets</span>
+              <span className="text-[20px] md:text-[25px] lg:text-[28px] font-regular">
+                Sree Hariganesh Sweets
+              </span>
             </Link>
+            <div className="mt-8 lg:px-4">
+              <div className="text-xl text-red-700 font-bold mb-2">
+                Social Media
+              </div>
+              <div className="flex flex-col gap-5">
+                  <span className="bg-black text-transparent w-[120px] bg-clip-text hover:bg-gradient-to-r hover:from-[#833ab4] hover:via-[#fd1d1d] hover:to-[#fcb045] hover:cursor-pointer text-xl font-light hover:font-medium transition-all">
+                    Instagram
+                  </span>
+              </div>
+              <div className="flex flex-col gap-5">
+                  <span className="bg-black text-transparent w-[120px] bg-clip-text hover:bg-gradient-to-r hover:from-[#00c6ff] hover:to-[#0072ff] hover:cursor-pointer text-black text-xl font-light hover:font-medium  transition-all">
+                    Facebook
+                  </span>
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col gap-10 lg:gap-20 lg:flex-row lg:mt-12">
@@ -77,29 +101,36 @@ const Footer = () => {
                     Email ID
                   </h2>
                   <p className=" font-light text-lg">
-                    govindarajsakm@gmail.com
+                    hariganeshsweets@gmail.com
                   </p>
                 </div>
               </div>
               <div>
-                <h2 className="text-xl text-red-700 font-medium mb-2">  
+                <h2 className="text-xl text-red-700 font-medium mb-2">
                   Address
                 </h2>
                 <p className="font-light text-lg">
-                  2/40, 4th Street, S V M Nagar, Palanipet, Arakkonam - 631002.
+                  No 40, Gandhi Road, Palanipet, Arakkonam - 631002.
+                  <br />
+                  <span className="font-bold">(Landmark</span> : Opposite to
+                  Angalamman Koyil.<span className="font-bold">)</span>
                 </p>
               </div>
             </div>
           </div>
         </div>
-        <hr className="border-[1px] border-gray-300 my-10"/>
+        <hr className="border-[1px] border-gray-300 my-10" />
         <div className="flex flex-col gap-2 lg:flex-row justify-between">
           <p className="font-light text-lg mb-4">
             Copyright© 2024 SHGS All Rights Reserved.
           </p>
           <p className="font-light text-lg mb-4">
             Powered by{" "}
-            <Link href="https://theweekendcoders.vercel.app" className="underline text-red-500" target="_blank">
+            <Link
+              href="https://theweekendcoders.vercel.app"
+              className="underline text-red-500"
+              target="_blank"
+            >
               theweekendcoders
             </Link>
           </p>
