@@ -14,7 +14,7 @@ const page = () => {
   const handleSignIn = async () => {
     try {
       await googleSignIn();
-      router.push("/");
+      router.push("/profile");
     } catch (error) {
       console.log(error);
     }
