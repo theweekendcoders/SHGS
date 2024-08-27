@@ -16,7 +16,7 @@ const page = () => {
   const handleSignIn = async () => {
     try {
       await googleSignIn();
-      router.push("/");
+      window.location.href = "/";
     } catch (error) {
       console.log(error);
     }
