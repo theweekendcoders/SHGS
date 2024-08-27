@@ -5,16 +5,18 @@ import Image from "next/image";
 import Navbar from "../components/Navbar";
 import Link from "next/link";
 import { UserAuth } from "../context/AuthContext";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 
 const page = () => {
   const { user, googleSignIn, logOut } = UserAuth();
+  const searchParams = useSearchParams();
+  console.log(searchParams)
   const router = useRouter();
 
   const handleSignIn = async () => {
     try {
       await googleSignIn();
-      router.push("/profile");
+      router.push("/");
     } catch (error) {
       console.log(error);
     }

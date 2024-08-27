@@ -119,6 +119,13 @@ const Products = ({ products, item_name }) => {
                       >
                         Add
                       </button>
+                    ) : sweet.stock ===true || sweet.stock === "orderBasis" ? (
+                      <button
+                        disabled
+                        className="px-12 py-3 bg-gray-400 rounded-full w-full text-white font-medium"
+                      >
+                        Order Basis
+                      </button>
                     ) : (
                       <button
                         disabled
